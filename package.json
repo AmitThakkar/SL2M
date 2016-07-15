@@ -1,0 +1,31 @@
+{
+  "name": "sl2m",
+  "version": "0.0.1",
+  "description": "This is a web application build using NodeJS which will take artist name as the input and display a list of albums using iTunes API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmitThakkar/SL2M.git"
+  },
+  "keywords": [
+    "Angular2",
+    "NodeJS",
+    "ExpressJS",
+    "iTunes",
+    "API"
+  ],
+  "author": "Amit Thakkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmitThakkar/SL2M/issues"
+  },
+  "homepage": "https://github.com/AmitThakkar/SL2M#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "http-status": "^0.2.3",
+    "request": "^2.73.0"
+  }
+}
