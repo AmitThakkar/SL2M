@@ -19,6 +19,7 @@ export class MusicBasketComponent {
 
     public artists:Artist[] = undefined;
     public albums:Album[] = undefined;
+    public tracks:Track[] = undefined;
 
     constructor(private _musicBasketService:MusicBasketService) {
     }
@@ -53,6 +54,7 @@ export class MusicBasketComponent {
 
     public listAlbum(artistId) {
         this.artists = undefined;
+        this.albums = undefined;
         this._musicBasketService.listAlbum(artistId)
             .subscribe((albums:Album[]) => {
                 this.albums = albums;
@@ -63,5 +65,16 @@ export class MusicBasketComponent {
         if (this.nextSearchRequired) {
             this.listArtist();
         }
+    }
+
+    public listTrack(collectionId) {
+        this._musicBasketService.listTrack(collectionId)
+            .subscribe((trackList) => {
+                this.tracks = trackList.tracks;
+                console.log(this.tracks);
+                // this.trackAlbum = trackList.album;
+            }, (error) => {
+                // TODO show error here.
+            });
     }
 }

@@ -39,7 +39,7 @@ export class MusicBasketService {
             .catch(this.handleError);
     }
 
-    public listTrack(collectionId:string) {
+    public listTrack(collectionId:string):Observable<any> {
         return this.http.get(this.RETRIEVE_TRACK_LIST_URL.replace('{collectionId}', collectionId))
             .map(this.extractData)
             .catch(this.handleError);
