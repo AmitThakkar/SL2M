@@ -17,6 +17,8 @@ export class MusicBasketComponent {
     private searchInProgress:any = undefined;
     private nextSearchRequired:any = undefined;
 
+    public artists:Artist[] = undefined;
+
     constructor(private _musicBasketService:MusicBasketService) {
     }
 
@@ -37,6 +39,11 @@ export class MusicBasketComponent {
     public listArtist() {
         this.searchInProgress = true;
         this._musicBasketService.listArtist(this.artistName)
+            .subscribe((artists) => {
+                this.artists = artists;
+            }, (error) => {
+                // TODO show error here.
+            });
         this.searchInProgress = false;
         if (this.nextSearchRequired) {
             this.listArtist();
