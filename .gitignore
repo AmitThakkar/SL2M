@@ -13,5 +13,7 @@ npm-debug.log
 #Angular2 Files
 ###########################
 typings/
-client/app/*.js
-client/app/*.js.map
+client/app/**.js
+client/app/**.js.map
+client/app/music-basket/**.js
+client/app/music-basket/**.js.map
