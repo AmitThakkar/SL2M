@@ -1,5 +1,15 @@
 <h1>Music Basket</h1>
-<input type="text" (keyup)="keyup($event)">
+Enter Artist Name: <input type="text" (keyup)="keyup($event)">
 <ul>
-    <li *ngFor="let artist of artists">{{artist.artistName}}</li>
+    <li *ngFor="let artist of artists" (click)="listAlbum(artist.artistId)">{{artist.artistName}}</li>
 </ul>
+<div *ngIf="albums">
+    Albums<br/>
+    <ul>
+        <li *ngFor="let album of albums" (click)="listTrack(album.collectionId)">
+            <img [src]="album.artworkUrl100">
+            <div>{{album.collectionName}}</div>
+            <div>{{album.artistName}}</div>
+        </li>
+    </ul>
+</div>

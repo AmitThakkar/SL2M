@@ -11,13 +11,14 @@ import {MusicBasketService} from "./music.basket.service";
     providers: [MusicBasketService]
 })
 export class MusicBasketComponent {
-    private requestWaitTime:number = 200;
+    private requestWaitTime:number = 500;
     private artistName:string = '';
     private refreshTimer:any = undefined;
     private searchInProgress:any = undefined;
     private nextSearchRequired:any = undefined;
 
     public artists:Artist[] = undefined;
+    public albums:Album[] = undefined;
 
     constructor(private _musicBasketService:MusicBasketService) {
     }
@@ -41,6 +42,20 @@ export class MusicBasketComponent {
         this._musicBasketService.listArtist(this.artistName)
             .subscribe((artists:Artist[]) => {
                 this.artists = artists;
+            }, (error) => {
+                // TODO show error here.
+            });
+        this.searchInProgress = false;
+        if (this.nextSearchRequired) {
+            this.listArtist();
+        }
+    }
+
+    public listAlbum(artistId) {
+        this.artists = undefined;
+        this._musicBasketService.listAlbum(artistId)
+            .subscribe((albums:Album[]) => {
+                this.albums = albums;
             }, (error) => {
                 // TODO show error here.
             });
