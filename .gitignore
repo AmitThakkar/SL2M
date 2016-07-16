@@ -17,3 +17,7 @@ client/app/**.js
 client/app/**.js.map
 client/app/music-basket/**.js
 client/app/music-basket/**.js.map
+client/app/music-basket/album/**.js
+client/app/music-basket/album/**.js.map
+client/app/music-basket/artist/**.js
+client/app/music-basket/artist/**.js.map
