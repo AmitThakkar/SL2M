@@ -39,7 +39,7 @@ export class MusicBasketComponent {
     public listArtist() {
         this.searchInProgress = true;
         this._musicBasketService.listArtist(this.artistName)
-            .subscribe((artists) => {
+            .subscribe((artists:Artist[]) => {
                 this.artists = artists;
             }, (error) => {
                 // TODO show error here.

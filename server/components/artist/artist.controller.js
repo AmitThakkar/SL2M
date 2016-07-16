@@ -8,7 +8,7 @@ const HTTP_STATUS = require('http-status');
 
 // Constants
 const API_URL = 'https://itunes.apple.com/';
-const RETRIEVE_ARTIST_URL = API_URL + 'search?term={artistName}';
+const RETRIEVE_ARTIST_LIST_URL = API_URL + 'search?term={artistName}';
 const RETRIEVE_ALBUM_LIST_URL = API_URL + 'lookup?id={artistId}&entity=album';
 const RETRIEVE_TRACK_LIST_URL = API_URL + 'lookup?id={collectionId}&entity=song ';
 
@@ -18,7 +18,7 @@ exports.listArtist = (request, response) => {
     if (!artistName) {
         return response.status(HTTP_STATUS.UNPROCESSABLE_ENTITY).json({message: "Please provide artist Name"});
     }
-    REQUEST(RETRIEVE_ARTIST_URL.replace('{artistName}', artistName), function (error, artistResponse) {
+    REQUEST(RETRIEVE_ARTIST_LIST_URL.replace('{artistName}', artistName), function (error, artistResponse) {
         if (error) {
             return response.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({error: error});
         } else if (artistResponse.statusCode == HTTP_STATUS.OK) {

@@ -1,2 +1,5 @@
 <h1>Music Basket</h1>
 <input type="text" (keyup)="keyup($event)">
+<ul>
+    <li *ngFor="let artist of artists">{{artist.artistName}}</li>
+</ul>

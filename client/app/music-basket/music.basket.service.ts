@@ -8,7 +8,7 @@ import {Observable} from "rxjs/Rx";
 @Injectable()
 export class MusicBasketService {
     private SERVER_URL = 'http://localhost:8081/';
-    private RETRIEVE_ARTIST_URL = this.SERVER_URL + 'api/artistList?artistName={artistName}';
+    private RETRIEVE_ARTIST_LIST_URL = this.SERVER_URL + 'api/artistList?artistName={artistName}';
     private RETRIEVE_ALBUM_LIST_URL = this.SERVER_URL + 'api/albumList?artistId={artistId}';
     private RETRIEVE_TRACK_LIST_URL = this.SERVER_URL + 'api/trackList?collectionId={collectionId}';
 
@@ -28,7 +28,7 @@ export class MusicBasketService {
     }
 
     public listArtist(artistName:string):Observable<Artist[]> {
-        return this.http.get(this.RETRIEVE_ARTIST_URL.replace('{artistName}', artistName))
+        return this.http.get(this.RETRIEVE_ARTIST_LIST_URL.replace('{artistName}', artistName))
             .map(this.extractData)
             .catch(this.handleError);
     }
