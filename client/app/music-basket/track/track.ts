@@ -2,7 +2,10 @@
  * Created by amitthakkar on 16/07/16.
  */
 interface Track {
-    collectionName:string,
-    artistName:string,
-    trackCount:string
+    trackNumber:number,
+    trackName:string,
+    collectionArtistName:string,
+    trackTimeMillis:number,
+    primaryGenreName:string,
+    releaseDate:string
 }

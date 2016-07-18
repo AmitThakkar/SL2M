@@ -13,3 +13,20 @@ Enter Artist Name: <input type="text" (keyup)="keyup($event)">
         </li>
     </ul>
 </div>
+<modal #trackList>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">{{trackAlbum?.album?.collectionName}} </h4>
+        <h5 class="modal-title">{{trackAlbum?.album?.artistName}} > </h5>
+        {{trackAlbum?.album?.trackCount}} Songs
+    </modal-header>
+    <modal-body>
+        <ul>
+            <li *ngFor="let track of trackAlbum?.tracks">
+                {{track?.trackNumber}}. {{track?.trackName}} ({{track?.collectionArtistName}})
+                {{track?.trackTimeMillis}}
+                {{track?.primaryGenreName}}
+                {{track?.releaseDate}}
+            </li>
+        </ul>
+    </modal-body>
+</modal>

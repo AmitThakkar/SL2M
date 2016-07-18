@@ -1,14 +1,16 @@
 /**
  * Created by amitthakkar on 15/07/16.
  */
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {MusicBasketService} from "./music.basket.service";
+import {MODAL_DIRECTIVES, ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
     selector: 'my-app',
     moduleId: module.id,
     templateUrl: './music.basket.html',
-    providers: [MusicBasketService]
+    providers: [MusicBasketService],
+    directives: [MODAL_DIRECTIVES]
 })
 export class MusicBasketComponent {
     private requestWaitTime:number = 500;
@@ -19,7 +21,9 @@ export class MusicBasketComponent {
 
     public artists:Artist[] = undefined;
     public albums:Album[] = undefined;
-    public tracks:Track[] = undefined;
+    public trackAlbum:Track[] = undefined;
+
+    @ViewChild('trackList') trackList:ModalComponent;
 
     constructor(private _musicBasketService:MusicBasketService) {
     }
@@ -70,9 +74,8 @@ export class MusicBasketComponent {
     public listTrack(collectionId) {
         this._musicBasketService.listTrack(collectionId)
             .subscribe((trackList) => {
-                this.tracks = trackList.tracks;
-                console.log(this.tracks);
-                // this.trackAlbum = trackList.album;
+                this.trackAlbum = trackList;
+                this.trackList.open();
             }, (error) => {
                 // TODO show error here.
             });
