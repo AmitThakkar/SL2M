@@ -1,16 +1,14 @@
 /**
  * Created by amitthakkar on 15/07/16.
  */
-import {Component, ViewContainerRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {MusicBasketService} from "./music.basket.service";
-import {Modal, BS_MODAL_PROVIDERS} from 'angular2-modal/plugins/bootstrap/index';
 
 @Component({
     selector: 'my-app',
     moduleId: module.id,
     templateUrl: './music.basket.html',
-    providers: [MusicBasketService],
-    viewProviders: [...BS_MODAL_PROVIDERS]
+    providers: [MusicBasketService]
 })
 export class MusicBasketComponent {
     private requestWaitTime:number = 500;
@@ -23,8 +21,7 @@ export class MusicBasketComponent {
     public albums:Album[] = undefined;
     public tracks:Track[] = undefined;
 
-    constructor(private _musicBasketService:MusicBasketService, public modal:Modal, viewContainer:ViewContainerRef) {
-        modal.defaultViewContainer = viewContainer;
+    constructor(private _musicBasketService:MusicBasketService) {
     }
 
     public keyup(event:any) {
@@ -76,11 +73,6 @@ export class MusicBasketComponent {
                 this.tracks = trackList.tracks;
                 console.log(this.tracks);
                 // this.trackAlbum = trackList.album;
-                this.modal.alert()
-                    .size('lg')
-                    .showClose(true)
-                    .title('A simple Alert style modal window')
-                    .open();
             }, (error) => {
                 // TODO show error here.
             });
