@@ -23,9 +23,9 @@ Enter Artist Name: <input type="text" (keyup)="keyup($event)">
         <ul>
             <li *ngFor="let track of trackAlbum?.tracks">
                 {{track?.trackNumber}}. {{track?.trackName}} ({{track?.collectionArtistName}})
-                {{track?.trackTimeMillis}}
+                {{track?.trackTimeMillis/1000}}
                 {{track?.primaryGenreName}}
-                {{track?.releaseDate}}
+                {{track?.releaseDate|date}}
             </li>
         </ul>
     </modal-body>
